@@ -1,3 +1,5 @@
+import { IMPORTED_HEADLINE_FONTS } from "@/content/importedFonts";
+
 export type HeadlineFontOption = {
   value: string;
   label: string;
@@ -68,4 +70,4 @@ export const SM_HEADLINE_FONTS: HeadlineFontOption[] = [
   { value: "sm-stellagetest-regular", label: "SM StellageTest-Regular", family: "SM StellageTest-Regular" },
 ];
 
-export const HEADLINE_FONTS: HeadlineFontOption[] = [...BASE_HEADLINE_FONTS, ...SM_HEADLINE_FONTS];
+export const HEADLINE_FONTS: HeadlineFontOption[] = [...BASE_HEADLINE_FONTS, ...SM_HEADLINE_FONTS, ...IMPORTED_HEADLINE_FONTS];
