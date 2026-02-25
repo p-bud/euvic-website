@@ -91,7 +91,7 @@ main {
 
 .hero-e-outline {
   position: absolute;
-  border: 1.5px solid rgba(var(--electric-cobalt-rgb), 0.24);
+  border: 1.5px solid rgba(var(--electric-cobalt-rgb), 0.12);
   border-top-left-radius: 5.5rem;
   border-bottom-left-radius: 5.5rem;
   border-top-right-radius: 0;

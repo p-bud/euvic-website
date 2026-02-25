@@ -12,7 +12,7 @@ export function HeroSection() {
   return (
     <section className="surface-dark relative overflow-hidden">
       <GridLinesBg strength={55} />
-      <span className="hero-e-outline right-0 top-[14%] hidden h-[58vh] w-[31vw] lg:block" />
+      <span className="hero-e-outline right-0 top-[clamp(5.5rem,10vh,9.5rem)] hidden h-[clamp(22rem,54vh,38rem)] w-[clamp(18rem,28vw,34rem)] lg:block" />
 
       <div className="section-shell relative z-10 flex flex-col pb-14 pt-8 md:pb-16">
         <nav className="grid grid-cols-[1fr_auto_1fr] items-center text-chrome">
@@ -31,23 +31,26 @@ export function HeroSection() {
           </div>
         </nav>
 
-        <div className="grid gap-8 pt-10 md:pt-12 lg:min-h-[78vh] lg:grid-cols-12 lg:gap-10 lg:pt-20">
+        <div className="grid gap-8 pt-10 md:pt-12 lg:min-h-[84vh] lg:grid-cols-12 lg:gap-10 lg:pt-[clamp(2.75rem,7vh,6.75rem)]">
           <motion.div
-            className="min-w-0 lg:col-span-6 lg:pl-10 lg:pt-8 xl:pl-16 xl:pt-10"
+            className="min-w-0 lg:col-span-7 lg:pl-[clamp(2.25rem,6vw,7rem)] lg:pt-[clamp(0rem,1vh,0.6rem)]"
             initial={reduceMotion ? undefined : { opacity: 0, y: 36 }}
             animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
             transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
           >
-            <h1 className="font-display text-[2.6rem] leading-[1.02] tracking-[-0.01em] text-titanium sm:text-[3rem] md:text-[4.1rem] lg:text-[4.8rem] xl:text-[5.8rem]">
-              <span className="block whitespace-nowrap">Engineering Today&apos;s</span>
-              <span className="mt-2 block whitespace-nowrap text-titanium md:mt-3">Peace of Mind</span>
+            <h1 className="font-display text-[clamp(2.8rem,6vw,6.7rem)] font-medium leading-[0.9] tracking-[-0.03em] text-titanium">
+              <span className="block md:whitespace-nowrap">
+                Engineering <span className="text-chrome/34">Today&apos;s</span>
+              </span>
+              <span className="mt-1 block md:whitespace-nowrap md:mt-2">Peace of Mind</span>
             </h1>
 
-            <p className="mt-10 max-w-[700px] text-base leading-relaxed text-chrome sm:text-lg md:mt-12 md:text-[1.95rem] md:leading-[1.3]">
+            <div className="mt-10 h-px w-16 bg-cobalt/55 md:mt-12 md:w-20" />
+            <p className="mt-6 max-w-[clamp(22ch,45vw,29ch)] text-[clamp(1.25rem,2.2vw,2.05rem)] leading-[1.17] text-chrome/95">
               {hero.subtitle}
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3 md:mt-12">
+            <div className="mt-8 flex flex-wrap items-center gap-5 md:mt-12">
               <Button
                 href="#contact"
                 variant="primary"
@@ -59,22 +62,18 @@ export function HeroSection() {
               >
                 Work with us
               </Button>
-              <Button
+              <a
                 href="#services"
-                variant="secondary"
-                size="lg"
-                icon={<span aria-hidden>→</span>}
-                eventName="cta_secondary_click"
-                eventMeta={{ section: "hero" }}
-                className="px-8"
+                className="inline-flex items-center gap-2 text-sm font-medium tracking-[0.01em] text-titanium/82 underline decoration-chrome/45 underline-offset-[5px] transition-all duration-300 hover:text-titanium hover:decoration-cobalt md:text-base"
               >
                 Explore services
-              </Button>
+                <span aria-hidden>→</span>
+              </a>
             </div>
           </motion.div>
 
           <motion.div
-            className="relative hidden lg:col-span-6 lg:block"
+            className="relative hidden lg:col-span-5 lg:block"
             initial={reduceMotion ? undefined : { opacity: 0, x: 44 }}
             animate={reduceMotion ? undefined : { opacity: 1, x: 0 }}
             transition={{ duration: 0.95, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
