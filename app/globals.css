@@ -10,6 +10,30 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Ortica Linear";
+  src: url("/fonts/OrticaLinear-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sneaky Times";
+  src: url("/fonts/Sneaky-Times.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Basteleur";
+  src: url("/fonts/Basteleur-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --carbon-graphite: #111416;
   --electric-cobalt: #0072dd;
@@ -32,6 +56,7 @@
   --duration-fast: 180ms;
   --duration-base: 360ms;
   --duration-slow: 900ms;
+  --font-display-family: "Sincerity";
 }
 
 * {
@@ -56,8 +81,24 @@ main {
 }
 
 .font-display {
-  font-family: "Sincerity", "Iowan Old Style", "Times New Roman", serif;
+  font-family: var(--font-display-family), "Iowan Old Style", "Times New Roman", serif;
   letter-spacing: -0.01em;
+}
+
+html[data-headline-font="sincerity"] {
+  --font-display-family: "Sincerity";
+}
+
+html[data-headline-font="ortica"] {
+  --font-display-family: "Ortica Linear";
+}
+
+html[data-headline-font="sneaky"] {
+  --font-display-family: "Sneaky Times";
+}
+
+html[data-headline-font="basteleur"] {
+  --font-display-family: "Basteleur";
 }
 
 .section-shell {

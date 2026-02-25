@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { HeadlineFontToggle } from "@/components/ui/HeadlineFontToggle";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.euvic.com"),
@@ -17,11 +18,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="en"
       id="top"
+      data-headline-font="sincerity"
       style={{
         ["--font-host-grotesk" as string]: '"Host Grotesk", "Avenir Next", "Segoe UI", sans-serif'
       }}
     >
-      <body>{children}</body>
+      <body>
+        {children}
+        <HeadlineFontToggle />
+      </body>
     </html>
   );
 }
