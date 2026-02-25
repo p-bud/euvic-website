@@ -15,7 +15,7 @@ export function ProcessSection() {
           {processSteps.map((step, index) => (
             <Reveal key={step.step} delay={index * 0.07}>
               <article className="rounded-panel border border-cobalt/30 bg-titanium p-7">
-                <p className="text-sm font-semibold tracking-[0.12em] text-cobalt">{step.step}</p>
+                <p className="font-small-heading text-sm font-semibold tracking-[0.12em] text-cobalt">{step.step}</p>
                 <h3 className="mt-4 text-2xl font-semibold text-carbon">{step.title}</h3>
                 <p className="mt-3 text-base leading-relaxed text-wolfram">{step.body}</p>
               </article>

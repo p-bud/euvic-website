@@ -9,7 +9,7 @@ export function FinalCtaSection() {
           <div className="rounded-panel bg-carbon px-7 py-10 text-titanium md:px-12 md:py-14">
             <div className="grid gap-8 md:grid-cols-[1.2fr_auto] md:items-end">
               <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-chrome">Final CTA</p>
+                <p className="font-small-heading text-xs uppercase tracking-[0.2em] text-chrome">Final CTA</p>
                 <h2 className="font-display mt-4 text-5xl leading-[0.95] md:text-6xl">{finalCta.title}</h2>
                 <p className="mt-5 max-w-2xl text-lg text-chrome">{finalCta.body}</p>
               </div>

@@ -81,6 +81,8 @@
   --duration-base: 360ms;
   --duration-slow: 900ms;
   --font-display-family: "Sincerity";
+  --font-body-family: "Host Grotesk";
+  --font-small-heading-family: "Host Grotesk";
 }
 
 * {
@@ -93,7 +95,7 @@ html {
 
 body {
   margin: 0;
-  font-family: var(--font-host-grotesk), "Avenir Next", "Segoe UI", sans-serif;
+  font-family: var(--font-body-family), var(--font-host-grotesk), "Avenir Next", "Segoe UI", sans-serif;
   font-size: 16px;
   color: var(--carbon-graphite);
   background: var(--titanium-white);
@@ -109,32 +111,8 @@ main {
   letter-spacing: -0.01em;
 }
 
-html[data-headline-font="sincerity"] {
-  --font-display-family: "Sincerity";
-}
-
-html[data-headline-font="ortica"] {
-  --font-display-family: "Ortica Linear";
-}
-
-html[data-headline-font="sneaky"] {
-  --font-display-family: "Sneaky Times";
-}
-
-html[data-headline-font="basteleur"] {
-  --font-display-family: "Basteleur";
-}
-
-html[data-headline-font="aujournuit"] {
-  --font-display-family: "Aujournuit";
-}
-
-html[data-headline-font="stellage"] {
-  --font-display-family: "Stellage Test Display";
-}
-
-html[data-headline-font="hauser"] {
-  --font-display-family: "Hauser Test";
+.font-small-heading {
+  font-family: var(--font-small-heading-family), var(--font-host-grotesk), "Avenir Next", "Segoe UI", sans-serif;
 }
 
 .section-shell {

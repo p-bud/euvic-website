@@ -15,7 +15,7 @@ export function CasesSection() {
           {cases.map((item, index) => (
             <Reveal key={item.title} delay={index * 0.08}>
               <article className="rounded-panel border border-carbon/10 bg-titanium p-7 shadow-soft">
-                <p className="text-xs uppercase tracking-[0.16em] text-cobalt">{item.tag}</p>
+                <p className="font-small-heading text-xs uppercase tracking-[0.16em] text-cobalt">{item.tag}</p>
                 <h3 className="mt-5 font-display text-4xl leading-[0.95] text-carbon">{item.title}</h3>
                 <p className="mt-4 text-base leading-relaxed text-wolfram">{item.summary}</p>
               </article>

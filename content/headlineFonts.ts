@@ -5,6 +5,7 @@ export type HeadlineFontOption = {
 };
 
 export const BASE_HEADLINE_FONTS: HeadlineFontOption[] = [
+  { value: "host", label: "Host Grotesk", family: "Host Grotesk" },
   { value: "sincerity", label: "Sincerity", family: "Sincerity" },
   { value: "ortica", label: "Ortica", family: "Ortica Linear" },
   { value: "sneaky", label: "Sneaky Times", family: "Sneaky Times" },

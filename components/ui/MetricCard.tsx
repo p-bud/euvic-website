@@ -52,7 +52,7 @@ export function MetricCard({ value, label, detail, accent = false }: MetricCardP
       whileHover={{ y: -6 }}
       transition={{ duration: 0.25 }}
     >
-      <p className="text-xs uppercase tracking-[0.18em] text-chrome/75">{label}</p>
+      <p className="font-small-heading text-xs uppercase tracking-[0.18em] text-chrome/75">{label}</p>
       <p className="mt-3 font-display text-5xl leading-none">{display}</p>
       <p className={`mt-4 text-sm ${accent ? "text-titanium/90" : "text-chrome"}`}>{detail}</p>
     </motion.article>
