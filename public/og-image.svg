@@ -1,0 +1,15 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#111416"/>
+  <circle cx="1096" cy="-120" r="360" fill="url(#a)" fill-opacity="0.7"/>
+  <rect x="62" y="80" width="1076" height="470" rx="64" stroke="#0072DD" stroke-opacity="0.32"/>
+  <text x="90" y="170" fill="#D7DDE4" font-family="Avenir Next, Arial" font-size="22" letter-spacing="6">EUVIC.</text>
+  <text x="90" y="292" fill="#F8FBFF" font-family="Iowan Old Style, serif" font-size="94">Engineering</text>
+  <text x="90" y="388" fill="#F8FBFF" font-family="Iowan Old Style, serif" font-size="94">Peace of Mind</text>
+  <text x="90" y="466" fill="#8E959E" font-family="Avenir Next, Arial" font-size="28">Global capability. Local understanding.</text>
+  <defs>
+    <radialGradient id="a" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1096 -120) rotate(120) scale(470)">
+      <stop stop-color="#0072DD"/>
+      <stop offset="1" stop-color="#0072DD" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>
