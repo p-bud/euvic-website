@@ -1,39 +1,36 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-type HeadlineFont = "sincerity" | "ortica" | "sneaky" | "basteleur";
+import { HEADLINE_FONTS } from "@/content/headlineFonts";
 
 const STORAGE_KEY = "euvic-headline-font";
+const DEFAULT_FONT = "sincerity";
 
-const OPTIONS: Array<{ value: HeadlineFont; label: string }> = [
-  { value: "sincerity", label: "Sincerity" },
-  { value: "ortica", label: "Ortica" },
-  { value: "sneaky", label: "Sneaky Times" },
-  { value: "basteleur", label: "Basteleur" }
-];
-
-function isHeadlineFont(value: string | null): value is HeadlineFont {
-  return value === "sincerity" || value === "ortica" || value === "sneaky" || value === "basteleur";
+function getOptionByValue(value: string | null) {
+  if (!value) return undefined;
+  return HEADLINE_FONTS.find((option) => option.value === value);
 }
 
-function applyHeadlineFont(value: HeadlineFont) {
-  document.documentElement.setAttribute("data-headline-font", value);
+function applyHeadlineFont(value: string) {
+  const option = getOptionByValue(value);
+  if (!option) return;
+  document.documentElement.setAttribute("data-headline-font", option.value);
+  document.documentElement.style.setProperty("--font-display-family", `"${option.family}"`);
 }
 
 export function HeadlineFontToggle() {
-  const [font, setFont] = useState<HeadlineFont>("sincerity");
+  const [font, setFont] = useState<string>(DEFAULT_FONT);
 
   useEffect(() => {
     const queryValue = new URLSearchParams(window.location.search).get("headlineFont");
     const stored = localStorage.getItem(STORAGE_KEY);
-    const initial = isHeadlineFont(queryValue) ? queryValue : isHeadlineFont(stored) ? stored : "sincerity";
+    const initial = getOptionByValue(queryValue)?.value ?? getOptionByValue(stored)?.value ?? DEFAULT_FONT;
     setFont(initial);
     applyHeadlineFont(initial);
     localStorage.setItem(STORAGE_KEY, initial);
   }, []);
 
-  const onChange = (nextValue: HeadlineFont) => {
+  const onChange = (nextValue: string) => {
     setFont(nextValue);
     applyHeadlineFont(nextValue);
     localStorage.setItem(STORAGE_KEY, nextValue);
@@ -47,10 +44,10 @@ export function HeadlineFontToggle() {
       <select
         id="headline-font"
         value={font}
-        onChange={(event) => onChange(event.target.value as HeadlineFont)}
-        className="mt-2 min-w-40 rounded-lg border border-chrome/35 bg-steel px-3 py-2 text-sm text-titanium outline-none"
+        onChange={(event) => onChange(event.target.value)}
+        className="mt-2 min-w-56 rounded-lg border border-chrome/35 bg-steel px-3 py-2 text-sm text-titanium outline-none"
       >
-        {OPTIONS.map((option) => (
+        {HEADLINE_FONTS.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}
           </option>

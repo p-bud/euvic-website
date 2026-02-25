@@ -1,0 +1,401 @@
+/* Auto-generated SM Foundry test font faces */
+@font-face {
+  font-family: "SM AffairsTest-Italic";
+  src: url("/fonts/sm/AffairsTest-Italic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM AffairsTest-Mono";
+  src: url("/fonts/sm/AffairsTest-Mono.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM AffairsTest-Regular";
+  src: url("/fonts/sm/AffairsTest-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM HauserTest-10Hairline";
+  src: url("/fonts/sm/HauserTest-10Hairline.otf") format("opentype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM HauserTest-20-80Multiform";
+  src: url("/fonts/sm/HauserTest-20-80Multiform.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM HauserTest-40Light";
+  src: url("/fonts/sm/HauserTest-40Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM HauserTest-60Regular";
+  src: url("/fonts/sm/HauserTest-60Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM MaxevilleMonoTest-Bold";
+  src: url("/fonts/sm/MaxevilleMonoTest-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM MaxevilleMonoTest-BoldConstruct";
+  src: url("/fonts/sm/MaxevilleMonoTest-BoldConstruct.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM MaxevilleMonoTest-Construct";
+  src: url("/fonts/sm/MaxevilleMonoTest-Construct.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM MaxevilleMonoTest-Regular";
+  src: url("/fonts/sm/MaxevilleMonoTest-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM MaxevilleTest-Bold";
+  src: url("/fonts/sm/MaxevilleTest-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM MaxevilleTest-BoldConstruct";
+  src: url("/fonts/sm/MaxevilleTest-BoldConstruct.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM MaxevilleTest-BoldConstructitalic";
+  src: url("/fonts/sm/MaxevilleTest-BoldConstructitalic.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM MaxevilleTest-BoldItalic";
+  src: url("/fonts/sm/MaxevilleTest-BoldItalic.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM MaxevilleTest-Construct";
+  src: url("/fonts/sm/MaxevilleTest-Construct.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM MaxevilleTest-ConstructItalic";
+  src: url("/fonts/sm/MaxevilleTest-ConstructItalic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM MaxevilleTest-Regular";
+  src: url("/fonts/sm/MaxevilleTest-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM MaxevilleTest-RegularItalic";
+  src: url("/fonts/sm/MaxevilleTest-RegularItalic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM MaxevilleTest-Tekst";
+  src: url("/fonts/sm/MaxevilleTest-Tekst.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM MaxevilleTest-TekstItalic";
+  src: url("/fonts/sm/MaxevilleTest-TekstItalic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM ReformatAMonoTest-Bold";
+  src: url("/fonts/sm/ReformatAMonoTest-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM ReformatAMonoTest-Regular";
+  src: url("/fonts/sm/ReformatAMonoTest-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM ReformatATest-Bold";
+  src: url("/fonts/sm/ReformatATest-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM ReformatATest-BoldItalic";
+  src: url("/fonts/sm/ReformatATest-BoldItalic.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM ReformatATest-Display";
+  src: url("/fonts/sm/ReformatATest-Display.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM ReformatATest-Italic";
+  src: url("/fonts/sm/ReformatATest-Italic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM ReformatATest-Regular";
+  src: url("/fonts/sm/ReformatATest-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM ReformatBMonoTest-Bold";
+  src: url("/fonts/sm/ReformatBMonoTest-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM ReformatBMonoTest-Regular";
+  src: url("/fonts/sm/ReformatBMonoTest-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM ReformatBTest-Bold";
+  src: url("/fonts/sm/ReformatBTest-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM ReformatBTest-BoldItalic";
+  src: url("/fonts/sm/ReformatBTest-BoldItalic.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM ReformatBTest-Display";
+  src: url("/fonts/sm/ReformatBTest-Display.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM ReformatBTest-Italic";
+  src: url("/fonts/sm/ReformatBTest-Italic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM ReformatBTest-Regular";
+  src: url("/fonts/sm/ReformatBTest-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM RietveldTest-Bold";
+  src: url("/fonts/sm/RietveldTest-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM RietveldTest-MonoBold";
+  src: url("/fonts/sm/RietveldTest-MonoBold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM RietveldTest-MonoRegular";
+  src: url("/fonts/sm/RietveldTest-MonoRegular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM RietveldTest-Regular";
+  src: url("/fonts/sm/RietveldTest-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM SolarisTest-Bold";
+  src: url("/fonts/sm/SolarisTest-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM SolarisTest-BoldItalic";
+  src: url("/fonts/sm/SolarisTest-BoldItalic.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM SolarisTest-Italic";
+  src: url("/fonts/sm/SolarisTest-Italic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM SolarisTest-Light";
+  src: url("/fonts/sm/SolarisTest-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM SolarisTest-LightItalic";
+  src: url("/fonts/sm/SolarisTest-LightItalic.otf") format("opentype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM SolarisTest-Regular";
+  src: url("/fonts/sm/SolarisTest-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM StellageTest-Constructed";
+  src: url("/fonts/sm/StellageTest-Constructed.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM StellageTest-ConstructedItalic";
+  src: url("/fonts/sm/StellageTest-ConstructedItalic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM StellageTest-Display";
+  src: url("/fonts/sm/StellageTest-Display.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM StellageTest-Italic";
+  src: url("/fonts/sm/StellageTest-Italic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SM StellageTest-Regular";
+  src: url("/fonts/sm/StellageTest-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+

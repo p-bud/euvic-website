@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./sm-fonts.css";
 import { HeadlineFontToggle } from "@/components/ui/HeadlineFontToggle";
 
 export const metadata: Metadata = {
