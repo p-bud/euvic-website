@@ -54,13 +54,13 @@ export function VmInspiredLanding() {
             </div>
           </nav>
 
-          <div className="grid gap-14 pt-16 lg:grid-cols-12 lg:gap-12 lg:pt-24">
+          <div className="grid gap-14 pt-16 lg:grid-cols-12 lg:gap-14 lg:pt-24">
             <div className="lg:col-span-7">
-              <h1 className="font-display text-[2.8rem] leading-[0.94] text-titanium sm:text-[3.7rem] md:text-[5rem] xl:text-[6rem]">
+              <h1 className="font-display text-[2.8rem] font-medium leading-[0.92] tracking-[-0.02em] text-titanium sm:text-[3.7rem] md:text-[5rem] xl:text-[6rem]">
                 <span className="block">Building the Next Wave</span>
                 <span className="block text-chrome/30">of Trusted AI Products</span>
               </h1>
-              <p className="mt-10 max-w-[32ch] text-xl leading-[1.25] text-chrome md:text-[2rem]">
+              <p className="mt-10 max-w-[30ch] text-xl leading-[1.24] text-chrome md:text-[1.9rem]">
                 Euvic helps ambitious companies launch, modernize, and scale digital products with measurable business impact.
               </p>
               <div className="mt-10 flex flex-wrap gap-3">
@@ -76,19 +76,19 @@ export function VmInspiredLanding() {
         </div>
       </section>
 
-      <section id="company" className="section-pad border-b border-chrome/10">
+      <section id="company" className="section-pad border-b border-carbon/10 bg-titanium text-carbon">
         <div className="section-shell grid gap-10 lg:grid-cols-12 lg:items-center">
           <div className="lg:col-span-6">
             <p className="font-small-heading text-xs uppercase tracking-[0.2em] text-cobalt/85">Built for Complexity</p>
-            <h2 className="font-display mt-5 text-5xl leading-[0.95] text-titanium md:text-7xl">
+            <h2 className="font-display mt-5 text-5xl font-medium leading-[0.95] tracking-[-0.015em] md:text-7xl">
               Deep engineering craft with product-level accountability.
             </h2>
-            <p className="mt-7 max-w-[30ch] text-xl leading-[1.3] text-chrome">
+            <p className="mt-7 max-w-[30ch] text-xl leading-[1.3] text-wolfram">
               We partner with leaders who need real technical depth, faster iterations, and delivery confidence in AI-heavy roadmaps.
             </p>
           </div>
           <div className="lg:col-span-6">
-            <div className="rounded-panel overflow-hidden border border-chrome/20 bg-steel/40">
+            <div className="rounded-panel overflow-hidden border border-carbon/18 bg-polished">
               <Image
                 src="/hero-team.png"
                 alt="Euvic team collaboration"
@@ -105,8 +105,8 @@ export function VmInspiredLanding() {
         <div className="section-shell">
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {proofs.map((item) => (
-              <article key={item.label} className="rounded-panel border border-cobalt/25 bg-carbon/60 p-6">
-                <p className="font-display text-5xl leading-none text-titanium md:text-6xl">{item.value}</p>
+              <article key={item.label} className="rounded-panel border border-cobalt/25 bg-carbon/60 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-cobalt/55">
+                <p className="font-display text-5xl font-medium leading-none text-titanium md:text-6xl">{item.value}</p>
                 <p className="font-small-heading mt-4 text-xs uppercase tracking-[0.16em] text-chrome/80">{item.label}</p>
               </article>
             ))}
@@ -114,21 +114,21 @@ export function VmInspiredLanding() {
         </div>
       </section>
 
-      <section id="services" className="section-pad border-b border-chrome/10">
+      <section id="services" className="section-pad border-b border-carbon/10 bg-titanium text-carbon">
         <div className="section-shell">
           <div className="mb-12 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="font-small-heading text-xs uppercase tracking-[0.2em] text-cobalt/85">Capabilities</p>
-              <h2 className="font-display mt-4 text-5xl leading-[0.96] text-titanium md:text-7xl">What Sets Euvic Apart</h2>
+              <h2 className="font-display mt-4 text-5xl font-medium leading-[0.96] tracking-[-0.015em] md:text-7xl">What Sets Euvic Apart</h2>
             </div>
-            <p className="max-w-xl text-lg text-chrome">A sharp mix of enterprise rigor and startup-level velocity, built for AI-era competition.</p>
+            <p className="max-w-xl text-lg text-wolfram">A sharp mix of enterprise rigor and startup-level velocity, built for AI-era competition.</p>
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">
             {offerings.map((item) => (
-              <article key={item.title} className="rounded-panel border border-chrome/20 bg-carbon/50 p-7">
-                <h3 className="font-display text-4xl leading-[0.95] text-titanium">{item.title}</h3>
-                <p className="mt-4 text-lg leading-relaxed text-chrome">{item.text}</p>
+              <article key={item.title} className="rounded-panel border border-carbon/18 bg-titanium p-7 transition-all duration-300 hover:-translate-y-1 hover:border-cobalt/50 hover:bg-polished/35">
+                <h3 className="font-display text-4xl font-medium leading-[0.95] tracking-[-0.01em] text-carbon">{item.title}</h3>
+                <p className="mt-4 text-lg leading-relaxed text-wolfram">{item.text}</p>
               </article>
             ))}
           </div>
@@ -158,7 +158,7 @@ export function VmInspiredLanding() {
           <div className="cta-gradient rounded-panel p-[1px]">
             <div className="rounded-panel bg-carbon px-8 py-12 text-titanium md:px-12 md:py-16">
               <p className="font-small-heading text-xs uppercase tracking-[0.2em] text-chrome/85">Let&apos;s Build</p>
-              <h2 className="font-display mt-4 max-w-4xl text-5xl leading-[0.94] md:text-7xl">
+              <h2 className="font-display mt-4 max-w-4xl text-5xl font-medium leading-[0.94] tracking-[-0.015em] md:text-7xl">
                 Looking for a trusted technology partner for your AI roadmap?
               </h2>
               <div className="mt-9 flex flex-wrap gap-3">

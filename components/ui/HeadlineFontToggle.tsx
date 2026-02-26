@@ -81,6 +81,7 @@ function FilteredFontSelect({
 }
 
 export function HeadlineFontToggle() {
+  const [enabled, setEnabled] = useState(false);
   const [titleFont, setTitleFont] = useState<string>(DEFAULTS.title);
   const [bodyFont, setBodyFont] = useState<string>(DEFAULTS.body);
   const [smallHeadingFont, setSmallHeadingFont] = useState<string>(DEFAULTS.smallHeading);
@@ -88,6 +89,10 @@ export function HeadlineFontToggle() {
 
   useEffect(() => {
     const search = new URLSearchParams(window.location.search);
+    const showTool = search.get("devFonts") === "1";
+    setEnabled(showTool);
+    if (!showTool) return;
+
     const title = getOptionByValue(search.get("titleFont"))?.value ??
       getOptionByValue(localStorage.getItem(STORAGE_KEYS.title))?.value ??
       DEFAULTS.title;
@@ -108,6 +113,8 @@ export function HeadlineFontToggle() {
     localStorage.setItem(STORAGE_KEYS.body, body);
     localStorage.setItem(STORAGE_KEYS.smallHeading, smallHeading);
   }, []);
+
+  if (!enabled) return null;
 
   const onTitleChange = (nextValue: string) => {
     setTitleFont(nextValue);
