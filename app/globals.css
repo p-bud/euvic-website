@@ -163,6 +163,77 @@ main {
   pointer-events: none;
 }
 
+.logo-rail-wrap {
+  overflow: hidden;
+  border: 1px solid rgba(215, 221, 228, 0.14);
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(17, 20, 22, 0), rgba(17, 20, 22, 0.88) 8%, rgba(17, 20, 22, 0.88) 92%, rgba(17, 20, 22, 0));
+}
+
+.logo-rail {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.65rem;
+}
+
+.logo-rail-animate {
+  animation: logo-marquee 28s linear infinite;
+}
+
+.logo-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 7.25rem;
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(215, 221, 228, 0.2);
+  color: rgba(215, 221, 228, 0.92);
+  background: rgba(37, 44, 49, 0.54);
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+}
+
+.glow-tile {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: linear-gradient(160deg, rgba(17, 20, 22, 0.82), rgba(17, 20, 22, 0.95));
+}
+
+.glow-tile::before {
+  content: "";
+  position: absolute;
+  inset: -24% -18%;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 15% 14%, rgba(var(--electric-cobalt-rgb), 0.28), transparent 50%),
+    radial-gradient(circle at 82% 84%, rgba(var(--electric-cobalt-rgb), 0.22), transparent 54%);
+  animation: cobalt-drift 11s ease-in-out infinite alternate;
+}
+
+@keyframes logo-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes cobalt-drift {
+  0% {
+    transform: translate3d(-2%, -1%, 0) scale(1);
+    opacity: 0.88;
+  }
+  100% {
+    transform: translate3d(2.8%, 2.4%, 0) scale(1.04);
+    opacity: 1;
+  }
+}
+
 .cta-gradient {
   background: linear-gradient(124deg, var(--coral), var(--fuchsia) 42%, var(--electric-cobalt));
 }
@@ -176,5 +247,10 @@ main {
     animation-duration: 1ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 1ms !important;
+  }
+
+  .logo-rail-animate,
+  .glow-tile::before {
+    animation: none !important;
   }
 }
