@@ -80,7 +80,6 @@ export function VmInspiredLanding() {
     <main className="surface-dark" id="top">
       <section className="relative overflow-hidden border-b border-chrome/10">
         <GridLinesBg strength={34} />
-        <span className="hero-e-outline right-0 top-[12%] hidden h-[58vh] w-[36vw] xl:block" />
 
         <div className="section-shell relative z-10 pb-24 pt-8 md:pb-28">
           <nav className="grid grid-cols-[1fr_auto_1fr] items-center text-chrome">
@@ -97,8 +96,8 @@ export function VmInspiredLanding() {
             </div>
           </nav>
 
-          <div className="grid gap-14 pt-16 lg:grid-cols-12 lg:gap-14 lg:pt-24">
-            <motion.div className="lg:col-span-8" {...fadeUp(0.04)}>
+          <div className="grid gap-14 pt-16 lg:pt-24">
+            <motion.div className="max-w-[64rem]" {...fadeUp(0.04)}>
               <h1 className="font-display max-w-[12ch] text-[3.1rem] font-medium leading-[0.92] tracking-[-0.022em] text-titanium sm:text-[4.2rem] lg:text-[5.3rem] 2xl:text-[6.15rem]">
                 <span className="block">Building the Next Wave</span>
                 <span className="block text-chrome/30">of Trusted AI Products</span>
@@ -112,9 +111,6 @@ export function VmInspiredLanding() {
               </div>
             </motion.div>
 
-            <div className="relative hidden lg:col-span-4 lg:block" aria-hidden>
-              <div className="absolute right-0 top-0 h-[33rem] w-[24rem] rounded-[2rem] border border-chrome/22" />
-            </div>
           </div>
 
           <motion.div className="mt-16 md:mt-20" {...fadeUp(0.12)}>

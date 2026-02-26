@@ -152,17 +152,6 @@ main {
   pointer-events: none;
 }
 
-.hero-e-outline {
-  position: absolute;
-  border: 1.5px solid rgba(var(--electric-cobalt-rgb), 0.24);
-  border-top-left-radius: 5.5rem;
-  border-bottom-left-radius: 5.5rem;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
 .logo-rail-wrap {
   overflow: hidden;
   border: 1px solid rgba(215, 221, 228, 0.14);
