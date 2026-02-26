@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { HEADLINE_FONTS } from "@/content/headlineFonts";
 
 const STORAGE_KEYS = {
@@ -14,6 +14,7 @@ const DEFAULTS = {
   body: "host",
   smallHeading: "host"
 } as const;
+const MAX_RESULTS = 120;
 
 function getOptionByValue(value: string | null) {
   if (!value) return undefined;
@@ -24,6 +25,59 @@ function applyCssVariable(variable: string, value: string) {
   const option = getOptionByValue(value);
   if (!option) return;
   document.documentElement.style.setProperty(variable, `"${option.family}"`);
+}
+
+function FilteredFontSelect({
+  label,
+  value,
+  onChange
+}: {
+  label: string;
+  value: string;
+  onChange: (nextValue: string) => void;
+}) {
+  const [query, setQuery] = useState("");
+
+  const filteredOptions = useMemo(() => {
+    const normalizedQuery = query.trim().toLowerCase();
+    const selected = getOptionByValue(value);
+    const base = normalizedQuery
+      ? HEADLINE_FONTS.filter((option) => option.label.toLowerCase().includes(normalizedQuery))
+      : HEADLINE_FONTS;
+    const sliced = base.slice(0, MAX_RESULTS);
+
+    if (selected && !sliced.some((option) => option.value === selected.value)) {
+      return [selected, ...sliced];
+    }
+    return sliced;
+  }, [query, value]);
+
+  return (
+    <label className="text-[11px] text-chrome/85">
+      {label}
+      <input
+        type="text"
+        value={query}
+        onChange={(event) => setQuery(event.target.value)}
+        placeholder="Search fonts..."
+        className="mt-1 block min-w-56 rounded-lg border border-chrome/35 bg-carbon px-3 py-2 text-sm text-titanium placeholder:text-chrome/60 outline-none"
+      />
+      <select
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        className="mt-1 block min-w-56 rounded-lg border border-chrome/35 bg-steel px-3 py-2 text-sm text-titanium outline-none"
+      >
+        {filteredOptions.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+      <p className="mt-1 text-[10px] text-chrome/65">
+        {query ? `Showing ${filteredOptions.length} of ${HEADLINE_FONTS.length}` : `${HEADLINE_FONTS.length} total fonts`}
+      </p>
+    </label>
+  );
 }
 
 export function HeadlineFontToggle() {
@@ -76,50 +130,9 @@ export function HeadlineFontToggle() {
     <div className="fixed bottom-4 right-4 z-50 rounded-xl border border-chrome/30 bg-carbon/85 p-3 backdrop-blur">
       <p className="block text-[11px] uppercase tracking-[0.12em] text-chrome">Typography</p>
       <div className="mt-2 grid gap-2">
-        <label className="text-[11px] text-chrome/85">
-          Title
-          <select
-            value={titleFont}
-            onChange={(event) => onTitleChange(event.target.value)}
-            className="mt-1 block min-w-56 rounded-lg border border-chrome/35 bg-steel px-3 py-2 text-sm text-titanium outline-none"
-          >
-            {HEADLINE_FONTS.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </label>
-
-        <label className="text-[11px] text-chrome/85">
-          Body / Subtext
-          <select
-            value={bodyFont}
-            onChange={(event) => onBodyChange(event.target.value)}
-            className="mt-1 block min-w-56 rounded-lg border border-chrome/35 bg-steel px-3 py-2 text-sm text-titanium outline-none"
-          >
-            {HEADLINE_FONTS.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </label>
-
-        <label className="text-[11px] text-chrome/85">
-          Small Heading
-          <select
-            value={smallHeadingFont}
-            onChange={(event) => onSmallHeadingChange(event.target.value)}
-            className="mt-1 block min-w-56 rounded-lg border border-chrome/35 bg-steel px-3 py-2 text-sm text-titanium outline-none"
-          >
-            {HEADLINE_FONTS.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </label>
+        <FilteredFontSelect label="Title" value={titleFont} onChange={onTitleChange} />
+        <FilteredFontSelect label="Body / Subtext" value={bodyFont} onChange={onBodyChange} />
+        <FilteredFontSelect label="Small Heading" value={smallHeadingFont} onChange={onSmallHeadingChange} />
       </div>
     </div>
   );
