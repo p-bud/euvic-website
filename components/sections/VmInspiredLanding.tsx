@@ -1,16 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import { useMemo, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { GridLinesBg } from "@/components/ui/GridLinesBg";
 
 const proofs = [
-  { value: "6000+", label: "Engineers", note: "Global delivery capacity" },
-  { value: "1000+", label: "Projects Delivered", note: "Across regulated industries" },
-  { value: "100+", label: "Enterprise Clients", note: "From scaleups to Fortune 500" },
-  { value: "20+", label: "Years in Delivery", note: "Proven execution model" }
+  { value: "6000+", label: "Engineers", note: "Global delivery capacity", detail: "Dedicated AI and data talent pods ready in weeks." },
+  { value: "1000+", label: "Projects Delivered", note: "Across regulated industries", detail: "Execution playbooks tuned for enterprise risk and speed." },
+  { value: "100+", label: "Enterprise Clients", note: "From scaleups to Fortune 500", detail: "Long-running partnerships with measurable roadmap outcomes." },
+  { value: "20+", label: "Years in Delivery", note: "Proven execution model", detail: "Operational maturity for mission-critical software programs." }
 ];
 
 const offerings = [
@@ -34,7 +34,14 @@ const offerings = [
 
 const industries = ["Fintech", "Healthcare", "Logistics", "Retail", "Manufacturing", "Public Sector"];
 
-const logoRail = ["AWS", "Webflow", "React", "Next.js", "Node", "OpenAI", "Postgres", "GSAP", "Docker", "Azure"];
+const rotatingTerms = ["AI Products", "AI Platforms", "AI Operations", "AI Ecosystems"];
+
+const liveSignalSeed = [
+  { label: "Deploys / week", base: 42, suffix: "", precision: 0 },
+  { label: "Model eval pass", base: 98.4, suffix: "%", precision: 1 },
+  { label: "Incident MTTR", base: 22, suffix: " min", precision: 0 },
+  { label: "On-time sprints", base: 96.1, suffix: "%", precision: 1 }
+];
 
 const spotlightCards = [
   {
@@ -59,27 +66,90 @@ const spotlightCards = [
   }
 ];
 
-function fadeUp(delay = 0) {
+function fadeUp(delay = 0, distance = 56) {
   return {
-    initial: { opacity: 0, y: 24 },
+    initial: { opacity: 0, y: distance },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: "-12%" },
-    transition: { duration: 0.68, delay, ease: [0.22, 1, 0.36, 1] }
+    viewport: { once: true, margin: "-8%" },
+    transition: { duration: 0.9, delay, ease: [0.2, 0.9, 0.2, 1] }
+  };
+}
+
+function staggerBlock(delay = 0) {
+  return {
+    initial: {},
+    whileInView: {},
+    viewport: { once: true, margin: "-8%" },
+    transition: { staggerChildren: 0.1, delayChildren: delay }
   };
 }
 
 export function VmInspiredLanding() {
   const reduceMotion = useReducedMotion();
   const [activeSlide, setActiveSlide] = useState(0);
-  const rail = useMemo(() => [...logoRail, ...logoRail], []);
+  const [termIndex, setTermIndex] = useState(0);
+  const [signalStep, setSignalStep] = useState(0);
+  const [glowPoint, setGlowPoint] = useState({ x: 72, y: 18 });
+  const heroRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (reduceMotion) return;
+    const interval = window.setInterval(() => {
+      setTermIndex((current) => (current + 1) % rotatingTerms.length);
+    }, 2800);
+    return () => window.clearInterval(interval);
+  }, [reduceMotion]);
+
+  useEffect(() => {
+    if (reduceMotion) return;
+    const interval = window.setInterval(() => {
+      setSignalStep((current) => current + 1);
+    }, 1750);
+    return () => window.clearInterval(interval);
+  }, [reduceMotion]);
 
   const prevSlide = () => setActiveSlide((current) => (current - 1 + spotlightCards.length) % spotlightCards.length);
   const nextSlide = () => setActiveSlide((current) => (current + 1) % spotlightCards.length);
 
+  const signals = liveSignalSeed.map((signal, index) => {
+    const delta = Math.sin((signalStep + index * 1.7) * 0.72) * (signal.precision ? 0.5 : 2);
+    const value = signal.base + delta;
+    return {
+      ...signal,
+      value: signal.precision ? value.toFixed(signal.precision) : Math.round(value).toString()
+    };
+  });
+
+  const handleHeroMouseMove = (event: MouseEvent<HTMLElement>) => {
+    if (reduceMotion || !heroRef.current) return;
+    const rect = heroRef.current.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width) * 100;
+    const y = ((event.clientY - rect.top) / rect.height) * 100;
+    setGlowPoint({ x, y });
+  };
+
+  const handleHeroMouseLeave = () => {
+    setGlowPoint({ x: 72, y: 18 });
+  };
+
   return (
     <main className="surface-dark" id="top">
-      <section className="relative overflow-hidden border-b border-chrome/10">
+      <section
+        ref={heroRef}
+        className="relative overflow-hidden border-b border-chrome/10"
+        onMouseMove={handleHeroMouseMove}
+        onMouseLeave={handleHeroMouseLeave}
+      >
         <GridLinesBg strength={34} />
+        {!reduceMotion ? (
+          <div
+            className="hero-cursor-glow"
+            style={{
+              background: `radial-gradient(circle at ${glowPoint.x}% ${glowPoint.y}%, rgba(53, 72, 254, 0.42), rgba(53, 72, 254, 0.14) 28%, transparent 62%)`
+            }}
+            aria-hidden
+          />
+        ) : null}
 
         <div className="section-shell relative z-10 pb-24 pt-8 md:pb-28">
           <nav className="grid grid-cols-[1fr_auto_1fr] items-center text-chrome">
@@ -97,27 +167,51 @@ export function VmInspiredLanding() {
           </nav>
 
           <div className="grid gap-14 pt-16 lg:pt-24">
-            <motion.div className="max-w-[64rem]" {...fadeUp(0.04)}>
-              <h1 className="font-display max-w-[12ch] text-[3.1rem] font-medium leading-[0.92] tracking-[-0.022em] text-titanium sm:text-[4.2rem] lg:text-[5.3rem] 2xl:text-[6.15rem]">
+            <motion.div className="max-w-[64rem] lg:pl-10 xl:pl-16" {...fadeUp(0.04)}>
+              <h1 className="font-display max-w-[12ch] text-[3.1rem] font-medium leading-[0.92] tracking-[-0.022em] text-titanium sm:text-[4.2rem] lg:text-[5.3rem] 2xl:text-[5.8rem]">
                 <span className="block">Building the Next Wave</span>
-                <span className="block text-chrome/30">of Trusted AI Products</span>
+                <span className="block text-chrome/30">of Trusted</span>
+                <span className="block text-chrome/30">
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={rotatingTerms[termIndex]}
+                      initial={reduceMotion ? false : { opacity: 0, y: 24, filter: "blur(8px)" }}
+                      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                      exit={reduceMotion ? undefined : { opacity: 0, y: -18, filter: "blur(6px)" }}
+                      transition={{ duration: 0.48, ease: [0.22, 1, 0.36, 1] }}
+                      className="inline-block min-w-[10ch] text-cobalt"
+                    >
+                      {rotatingTerms[termIndex]}
+                    </motion.span>
+                  </AnimatePresence>
+                </span>
               </h1>
-              <p className="mt-10 max-w-[26ch] text-[1.95rem] leading-[1.08] text-chrome sm:text-[2.08rem]">
+              <p className="mt-10 max-w-[23ch] text-[1.82rem] leading-[1.14] text-chrome sm:text-[1.94rem]">
                 Euvic helps ambitious companies launch, modernize, and scale digital products with measurable business impact.
               </p>
               <div className="mt-10 flex flex-wrap gap-3">
-                <Button href="#contact" size="lg" icon={<span aria-hidden>↗</span>}>Work with Euvic</Button>
-                <Button href="#services" variant="secondary" size="lg" icon={<span aria-hidden>→</span>}>Explore expertise</Button>
+                <Button href="#contact" size="lg" icon={<span aria-hidden>↗</span>}>Start AI Roadmap</Button>
+                <Button href="#services" variant="secondary" size="lg" icon={<span aria-hidden>→</span>}>See Delivery Model</Button>
               </div>
             </motion.div>
 
           </div>
 
           <motion.div className="mt-16 md:mt-20" {...fadeUp(0.12)}>
-            <div className="logo-rail-wrap">
-              <div className={`logo-rail ${reduceMotion ? "" : "logo-rail-animate"}`}>
-                {rail.map((logo, index) => (
-                  <span key={`${logo}-${index}`} className="logo-pill">{logo}</span>
+            <div className="signal-strip">
+              <p className="font-small-heading mb-3 text-[0.68rem] uppercase tracking-[0.2em] text-chrome/75">Live Delivery Signals</p>
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                {signals.map((signal) => (
+                  <div key={signal.label} className="signal-card vm-hover-card">
+                    <div className="mb-2 flex items-center gap-2">
+                      <span className={`signal-dot ${reduceMotion ? "" : "signal-dot-live"}`} />
+                      <span className="text-[0.75rem] uppercase tracking-[0.14em] text-chrome/72">{signal.label}</span>
+                    </div>
+                    <p className="font-display text-[1.9rem] leading-none text-titanium sm:text-[2.25rem]">
+                      {signal.value}
+                      <span className="text-chrome/80">{signal.suffix}</span>
+                    </p>
+                  </div>
                 ))}
               </div>
             </div>
@@ -137,16 +231,29 @@ export function VmInspiredLanding() {
             </p>
           </motion.div>
           <motion.div className="lg:col-span-6" {...fadeUp(0.08)}>
-            <div className="rounded-panel overflow-hidden border border-carbon/18 bg-polished">
-              <Image
-                src="/hero-team.png"
-                alt="Euvic team collaboration"
-                width={1240}
-                height={820}
-                className="h-full w-full object-cover"
-              />
+            <div className="rounded-panel ai-system-visual border border-carbon/18">
+              <div className="ai-system-grid" />
+              <div className={`ai-system-orb ${reduceMotion ? "" : "ai-system-orb-animate"}`} />
+              <div className="ai-system-node ai-system-node-a" />
+              <div className="ai-system-node ai-system-node-b" />
+              <div className="ai-system-node ai-system-node-c" />
+              <div className="ai-system-node ai-system-node-d" />
+              <div className="ai-system-link ai-system-link-1" />
+              <div className="ai-system-link ai-system-link-2" />
+              <div className="ai-system-metric">
+                <p className="font-small-heading text-[0.68rem] uppercase tracking-[0.16em] text-chrome/72">Model Runtime</p>
+                <p className="font-display mt-2 text-[1.8rem] leading-none text-titanium">99.97%</p>
+                <p className="mt-1 text-sm text-chrome/78">SLA stability across production regions</p>
+              </div>
+              <div className="ai-system-chip">AI Delivery Mesh</div>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      <section className="transition-band" aria-hidden>
+        <div className="section-shell">
+          <div className="transition-line" />
         </div>
       </section>
 
@@ -155,20 +262,21 @@ export function VmInspiredLanding() {
           <motion.h2 className="font-display mb-10 text-[2.25rem] leading-[0.94] text-titanium sm:text-[3.1rem]" {...fadeUp()}>
             Proof we deliver, by the numbers.
           </motion.h2>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <motion.div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4" {...staggerBlock(0.05)}>
             {proofs.map((item, index) => (
               <motion.article
                 key={item.label}
-                className="glow-tile rounded-panel border border-cobalt/28 p-6"
-                {...fadeUp(index * 0.05)}
+                className="glow-tile proof-card vm-hover-card rounded-panel border border-cobalt/28 p-6"
+                {...fadeUp(0, 64)}
                 whileHover={reduceMotion ? undefined : { y: -4, borderColor: "rgba(0,114,221,0.55)" }}
               >
                 <p className="font-display text-5xl font-medium leading-none text-titanium md:text-6xl">{item.value}</p>
                 <p className="font-small-heading mt-4 text-xs uppercase tracking-[0.16em] text-chrome/88">{item.label}</p>
                 <p className="mt-3 text-sm text-chrome/80">{item.note}</p>
+                <p className="proof-card-detail mt-3 text-sm text-titanium/88">{item.detail}</p>
               </motion.article>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -182,19 +290,25 @@ export function VmInspiredLanding() {
             <p className="max-w-xl text-lg text-wolfram">A sharp mix of enterprise rigor and startup-level velocity, built for AI-era competition.</p>
           </motion.div>
 
-          <div className="grid gap-4 md:grid-cols-2">
+          <motion.div className="grid gap-4 md:grid-cols-2" {...staggerBlock(0.06)}>
             {offerings.map((item, index) => (
               <motion.article
                 key={item.title}
-                className="rounded-panel border border-carbon/18 bg-titanium p-7"
-                {...fadeUp(index * 0.05)}
+                className="vm-hover-card rounded-panel border border-carbon/18 bg-titanium p-7"
+                {...fadeUp(0, 52)}
                 whileHover={reduceMotion ? undefined : { y: -4, borderColor: "rgba(0,114,221,0.42)", backgroundColor: "rgba(215,221,228,0.24)" }}
               >
                 <h3 className="font-display text-4xl font-medium leading-[0.95] tracking-[-0.01em] text-carbon">{item.title}</h3>
                 <p className="mt-4 text-lg leading-relaxed text-wolfram">{item.text}</p>
               </motion.article>
             ))}
-          </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="transition-band" aria-hidden>
+        <div className="section-shell">
+          <div className="transition-line" />
         </div>
       </section>
 
@@ -205,13 +319,13 @@ export function VmInspiredLanding() {
             <h2 className="font-display mt-4 text-5xl leading-[0.95] text-titanium md:text-6xl">Delivered across mission-critical sectors.</h2>
           </motion.div>
           <motion.div className="lg:col-span-8" {...fadeUp(0.08)}>
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <motion.div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3" {...staggerBlock(0.04)}>
               {industries.map((industry) => (
-                <div key={industry} className="rounded-panel border border-chrome/18 bg-carbon/45 p-5 transition-colors duration-300 hover:border-cobalt/45">
+                <motion.div key={industry} className="vm-hover-card rounded-panel border border-chrome/18 bg-carbon/45 p-5 transition-colors duration-300 hover:border-cobalt/45" {...fadeUp(0, 40)}>
                   <p className="text-xl text-titanium">{industry}</p>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -247,7 +361,7 @@ export function VmInspiredLanding() {
               transition={{ duration: 0.58, ease: [0.22, 1, 0.36, 1] }}
             >
               {spotlightCards.map((card) => (
-                <article key={card.title} className="mr-4 min-w-full rounded-panel border border-chrome/18 bg-carbon/45 p-8 md:p-10">
+                <article key={card.title} className="vm-hover-card mr-4 min-w-full rounded-panel border border-chrome/18 bg-carbon/45 p-8 md:p-10">
                   <p className="font-small-heading text-xs uppercase tracking-[0.2em] text-cobalt/85">Case Signal</p>
                   <h3 className="font-display mt-4 max-w-[16ch] text-4xl leading-[0.95] text-titanium md:text-5xl">{card.title}</h3>
                   <p className="mt-5 max-w-[52ch] text-lg leading-relaxed text-chrome">{card.text}</p>
@@ -278,7 +392,7 @@ export function VmInspiredLanding() {
         </div>
       </section>
 
-      <section id="contact" className="section-pad">
+      <section id="contact" className="anchor-target pt-14 pb-10 md:pt-16 md:pb-12">
         <div className="section-shell">
           <motion.div className="cta-gradient rounded-panel p-[1px]" {...fadeUp()}>
             <div className="rounded-panel bg-carbon px-8 py-12 text-titanium md:px-12 md:py-16">
@@ -287,7 +401,7 @@ export function VmInspiredLanding() {
                 Looking for a trusted technology partner for your AI roadmap?
               </h2>
               <div className="mt-9 flex flex-wrap gap-3">
-                <Button href="mailto:hello@euvic.com" size="lg" icon={<span aria-hidden>↗</span>}>Start a project</Button>
+                <Button href="mailto:hello@euvic.com" size="lg" icon={<span aria-hidden>↗</span>}>Start AI Roadmap</Button>
                 <Button href="#top" variant="secondary" size="lg" icon={<span aria-hidden>↑</span>}>Back to top</Button>
               </div>
             </div>
