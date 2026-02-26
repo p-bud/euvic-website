@@ -10,7 +10,7 @@ const STORAGE_KEYS = {
 } as const;
 
 const DEFAULTS = {
-  title: "sincerity",
+  title: "host",
   body: "host",
   smallHeading: "host"
 } as const;
@@ -84,6 +84,7 @@ export function HeadlineFontToggle() {
   const [titleFont, setTitleFont] = useState<string>(DEFAULTS.title);
   const [bodyFont, setBodyFont] = useState<string>(DEFAULTS.body);
   const [smallHeadingFont, setSmallHeadingFont] = useState<string>(DEFAULTS.smallHeading);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const search = new URLSearchParams(window.location.search);
@@ -127,12 +128,26 @@ export function HeadlineFontToggle() {
   };
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 rounded-xl border border-chrome/30 bg-carbon/85 p-3 backdrop-blur">
-      <p className="block text-[11px] uppercase tracking-[0.12em] text-chrome">Typography</p>
-      <div className="mt-2 grid gap-2">
-        <FilteredFontSelect label="Title" value={titleFont} onChange={onTitleChange} />
-        <FilteredFontSelect label="Body / Subtext" value={bodyFont} onChange={onBodyChange} />
-        <FilteredFontSelect label="Small Heading" value={smallHeadingFont} onChange={onSmallHeadingChange} />
+    <div className="fixed bottom-4 right-4 z-50">
+      <button
+        type="button"
+        onClick={() => setOpen((current) => !current)}
+        className="rounded-full border border-chrome/35 bg-carbon/85 px-3 py-2 text-xs text-chrome backdrop-blur hover:text-titanium"
+      >
+        Fonts {open ? "×" : "⚙"}
+      </button>
+
+      <div
+        className={`mt-2 w-[min(24rem,92vw)] rounded-xl border border-chrome/30 bg-carbon/85 p-3 backdrop-blur ${
+          open ? "block" : "hidden"
+        }`}
+      >
+        <p className="block text-[11px] uppercase tracking-[0.12em] text-chrome">Typography</p>
+        <div className="mt-2 grid max-h-[60vh] gap-2 overflow-y-auto pr-1">
+          <FilteredFontSelect label="Title" value={titleFont} onChange={onTitleChange} />
+          <FilteredFontSelect label="Body / Subtext" value={bodyFont} onChange={onBodyChange} />
+          <FilteredFontSelect label="Small Heading" value={smallHeadingFont} onChange={onSmallHeadingChange} />
+        </div>
       </div>
     </div>
   );

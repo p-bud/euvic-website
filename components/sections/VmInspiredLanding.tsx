@@ -4,15 +4,6 @@ import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { GridLinesBg } from "@/components/ui/GridLinesBg";
 
-const stack = [
-  "AI Product Engineering",
-  "Platform Modernization",
-  "Custom Enterprise Software",
-  "Data and Automation",
-  "Managed Delivery Squads",
-  "Cloud and DevOps"
-];
-
 const proofs = [
   { value: "6000+", label: "Engineers" },
   { value: "1000+", label: "Projects Delivered" },
@@ -64,10 +55,10 @@ export function VmInspiredLanding() {
           </nav>
 
           <div className="grid gap-14 pt-16 lg:grid-cols-12 lg:gap-12 lg:pt-24">
-            <div className="lg:col-span-8">
-              <h1 className="font-display text-[2.8rem] leading-[0.95] text-titanium sm:text-[3.7rem] md:text-[5rem] xl:text-[6.2rem]">
+            <div className="lg:col-span-7">
+              <h1 className="font-display text-[2.8rem] leading-[0.94] text-titanium sm:text-[3.7rem] md:text-[5rem] xl:text-[6rem]">
                 <span className="block">Building the Next Wave</span>
-                <span className="block text-chrome/32">of Trusted AI Products</span>
+                <span className="block text-chrome/30">of Trusted AI Products</span>
               </h1>
               <p className="mt-10 max-w-[32ch] text-xl leading-[1.25] text-chrome md:text-[2rem]">
                 Euvic helps ambitious companies launch, modernize, and scale digital products with measurable business impact.
@@ -78,14 +69,9 @@ export function VmInspiredLanding() {
               </div>
             </div>
 
-            <aside className="rounded-panel border border-chrome/20 bg-carbon/55 p-6 lg:col-span-4 lg:mt-3">
-              <p className="font-small-heading text-xs uppercase tracking-[0.18em] text-chrome/75">Core Stack</p>
-              <ul className="mt-5 space-y-3">
-                {stack.map((item) => (
-                  <li key={item} className="border-b border-chrome/15 pb-3 text-lg text-titanium">{item}</li>
-                ))}
-              </ul>
-            </aside>
+            <div className="relative hidden lg:col-span-5 lg:block">
+              <div className="absolute right-0 top-0 h-[34rem] w-[30rem] rounded-[2rem] border border-chrome/22" />
+            </div>
           </div>
         </div>
       </section>
