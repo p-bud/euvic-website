@@ -91,6 +91,7 @@
 
 html {
   scroll-behavior: smooth;
+  background: var(--electric-cobalt);
 }
 
 body {
@@ -98,7 +99,10 @@ body {
   font-family: var(--font-body-family), var(--font-host-grotesk), "Avenir Next", "Segoe UI", sans-serif;
   font-size: 16px;
   color: var(--carbon-graphite);
-  background: var(--titanium-white);
+  background:
+    radial-gradient(115% 80% at 70% -10%, rgba(var(--electric-cobalt-rgb), 0.52), transparent 60%),
+    radial-gradient(80% 60% at 5% 100%, rgba(var(--electric-cobalt-rgb), 0.28), transparent 72%),
+    var(--electric-cobalt);
   text-rendering: geometricPrecision;
 }
 

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import "./sm-fonts.css";
 import "./imported-fonts.css";
@@ -13,6 +13,10 @@ export const metadata: Metadata = {
     description: "Scalable software engineering, data, AI, and cloud delivery.",
     images: [{ url: "/og-image.svg", width: 1200, height: 630 }]
   }
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0072DD"
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
